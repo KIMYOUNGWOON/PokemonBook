@@ -17,12 +17,8 @@ const initialSelectValue: FilterSelectBoxData = {
 };
 
 const initialCheckValue: FilterCheckBoxData = {
-  heightSmall: true,
-  heightMedium: true,
-  heightLarge: true,
-  weightSmall: true,
-  weightMedium: true,
-  weightLarge: true,
+  height: ["small", "medium", "large"],
+  weight: ["small", "medium", "large"],
 };
 
 const FilterSection = () => {
@@ -39,7 +35,19 @@ const FilterSection = () => {
 
   const handleCheckChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
-    setCheckBoxValue({ ...checkBoxValue, [name]: checked });
+    const parse = name.split("-");
+
+    if (checked) {
+      setCheckBoxValue({
+        ...checkBoxValue,
+        [parse[0]]: [...checkBoxValue[parse[0]], parse[1]],
+      });
+    } else {
+      setCheckBoxValue({
+        ...checkBoxValue,
+        [parse[0]]: checkBoxValue[parse[0]].filter((el) => el !== parse[1]),
+      });
+    }
   };
 
   const handleClick = () => {
@@ -55,28 +63,14 @@ const FilterSection = () => {
       currentParams.set("ability", selectBoxValue.ability);
     }
 
-    if (initialCheckValue.heightSmall) {
-      currentParams.set("height", "small");
+    if (checkBoxValue.height.length > 0) {
+      const str = checkBoxValue.height.join(" ");
+      currentParams.set("height", str);
     }
 
-    if (initialCheckValue.heightMedium) {
-      currentParams.set("height", "medium");
-    }
-
-    if (initialCheckValue.heightLarge) {
-      currentParams.set("height", "large");
-    }
-
-    if (initialCheckValue.weightSmall) {
-      currentParams.set("weight", "small");
-    }
-
-    if (initialCheckValue.weightMedium) {
-      currentParams.set("weight", "medium");
-    }
-
-    if (initialCheckValue.weightLarge) {
-      currentParams.set("weight", "small medium large");
+    if (checkBoxValue.weight.length > 0) {
+      const str = checkBoxValue.weight.join(" ");
+      currentParams.set("weight", str);
     }
 
     setSearchParams(currentParams);
@@ -106,8 +100,8 @@ const FilterSection = () => {
           <StyledFormControlLabel
             control={
               <Checkbox
-                name="heightSmall"
-                checked={checkBoxValue.heightSmall}
+                name="height-small"
+                checked={checkBoxValue.height.includes("small")}
                 onChange={handleCheckChange}
               />
             }
@@ -116,8 +110,8 @@ const FilterSection = () => {
           <StyledFormControlLabel
             control={
               <Checkbox
-                name="heightMedium"
-                checked={checkBoxValue.heightMedium}
+                name="height-medium"
+                checked={checkBoxValue.height.includes("medium")}
                 onChange={handleCheckChange}
               />
             }
@@ -126,8 +120,8 @@ const FilterSection = () => {
           <StyledFormControlLabel
             control={
               <Checkbox
-                name="heightLarge"
-                checked={checkBoxValue.heightLarge}
+                name="height-large"
+                checked={checkBoxValue.height.includes("large")}
                 onChange={handleCheckChange}
               />
             }
@@ -139,8 +133,8 @@ const FilterSection = () => {
           <StyledFormControlLabel
             control={
               <Checkbox
-                name="weightSmall"
-                checked={checkBoxValue.weightSmall}
+                name="weight-small"
+                checked={checkBoxValue.weight.includes("small")}
                 onChange={handleCheckChange}
               />
             }
@@ -149,8 +143,8 @@ const FilterSection = () => {
           <StyledFormControlLabel
             control={
               <Checkbox
-                name="weightMedium"
-                checked={checkBoxValue.weightMedium}
+                name="weight-medium"
+                checked={checkBoxValue.weight.includes("medium")}
                 onChange={handleCheckChange}
               />
             }
@@ -159,8 +153,8 @@ const FilterSection = () => {
           <StyledFormControlLabel
             control={
               <Checkbox
-                name="weightLarge"
-                checked={checkBoxValue.weightLarge}
+                name="weight-large"
+                checked={checkBoxValue.weight.includes("large")}
                 onChange={handleCheckChange}
               />
             }

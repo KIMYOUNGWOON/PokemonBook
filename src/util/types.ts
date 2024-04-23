@@ -10,6 +10,8 @@ export interface PokemonData {
   backImage: string;
   types: string[];
   abilities: string[];
+  height: number;
+  weight: number;
 }
 
 export interface Type {
@@ -28,6 +30,8 @@ export interface Query {
   type: string | null;
   ability: string | null;
   keyword: string | null;
+  height: string | null;
+  weight: string | null;
 }
 
 export interface FilterSelectBoxData {
@@ -37,10 +41,7 @@ export interface FilterSelectBoxData {
 }
 
 export interface FilterCheckBoxData {
-  heightSmall: boolean;
-  heightMedium: boolean;
-  heightLarge: boolean;
-  weightSmall: boolean;
-  weightMedium: boolean;
-  weightLarge: boolean;
+  [key: string]: string[];
+  height: string[];
+  weight: string[];
 }

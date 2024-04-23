@@ -7,7 +7,11 @@ export async function getPokemonList({
   type,
   ability,
   keyword,
+  height,
+  weight,
 }: Query): Promise<{ totalItems: number; pagedPokemonList: PokemonData[] }> {
+  console.log(height);
+  console.log(weight);
   try {
     const { data } = await axiosInstance.get(`pokemon?limit=151`);
     const response = data.results;
@@ -27,11 +31,10 @@ export async function getPokemonList({
           height: data.height,
           weight: data.weight,
         };
+        console.log(pokemonData.id, pokemonData.height, pokemonData.weight);
         return pokemonData;
       })
     );
-
-    console.log(pokemonList);
 
     if (type) {
       pokemonList = pokemonList.filter((pokemon) =>
@@ -43,6 +46,30 @@ export async function getPokemonList({
       pokemonList = pokemonList.filter((pokemon) =>
         pokemon.abilities.includes(ability)
       );
+    }
+
+    if (height) {
+      pokemonList = pokemonList.filter((pokemon) => {
+        return (
+          (height.includes("small") && pokemon.height < 10) ||
+          (height.includes("medium") &&
+            pokemon.height >= 10 &&
+            pokemon.height < 20) ||
+          (height.includes("large") && pokemon.height >= 20)
+        );
+      });
+    }
+
+    if (weight) {
+      pokemonList = pokemonList.filter((pokemon) => {
+        return (
+          (weight.includes("small") && pokemon.weight < 300) ||
+          (weight.includes("medium") &&
+            pokemon.weight >= 300 &&
+            pokemon.weight < 1000) ||
+          (weight.includes("large") && pokemon.weight >= 1000)
+        );
+      });
     }
 
     if (keyword) {

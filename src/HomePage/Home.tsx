@@ -18,12 +18,16 @@ const Home = () => {
   const type = searchParams.get("type");
   const ability = searchParams.get("ability");
   const keyword = searchParams.get("keyword");
+  const height = searchParams.get("height");
+  const weight = searchParams.get("weight");
 
   const queryObj: Query = {
     offset,
     type,
     ability,
     keyword,
+    height,
+    weight,
   };
 
   const { data } = useQuery({
