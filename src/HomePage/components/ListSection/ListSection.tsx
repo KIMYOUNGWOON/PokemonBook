@@ -17,6 +17,7 @@ const ListSection: React.FC<Props> = ({ pokemonList, totalItems }) => {
         })}
       </ListWrapper>
       {totalItems > 6 && <PaginationButton totalItems={totalItems} />}
+      {pokemonList.length === 0 && <NotFound>Pokemon Not Found</NotFound>}
     </Container>
   );
 };
@@ -30,6 +31,14 @@ const ListWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
   margin-bottom: 40px;
+`;
+
+const NotFound = styled.div`
+  color: rgba(1, 1, 1, 0.5);
+  font-size: 38px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 180px;
 `;
 
 export default ListSection;

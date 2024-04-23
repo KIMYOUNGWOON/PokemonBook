@@ -7,6 +7,10 @@ const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  body {
+    font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  }
 `;
 
 export default GlobalStyles;

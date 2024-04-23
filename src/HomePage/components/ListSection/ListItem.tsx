@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PokemonData } from "../../../util/types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
-import { faBookmark as faBookmarkRegular } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import monoPocketBall from "../../../assets/mono.jpeg";
+import colorPocketBall from "../../../assets/color.jpeg";
+import { TYPE_COLOR } from "../../../util/data";
 
 interface Props {
   pokemonData: PokemonData;
@@ -12,23 +12,57 @@ interface Props {
 
 const ListItem: React.FC<Props> = ({ pokemonData }) => {
   const [like, setLike] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const stringData = localStorage.getItem("myList");
+  const myPickList = stringData ? JSON.parse(stringData) : [];
+  const isChecked = myPickList.some(
+    (data: PokemonData) => data.id === pokemonData.id
+  );
+
+  const handleHover = () => {
+    setIsHovered(true);
+  };
+
+  const handleLeave = () => {
+    setIsHovered(false);
+  };
 
   const handleClick = () => {
+    const storedData = localStorage.getItem("myList");
+    let myList = storedData ? JSON.parse(storedData) : [];
+
+    if (!like) {
+      myList.push(pokemonData);
+    } else {
+      myList = myList.filter((data: PokemonData) => data.id !== pokemonData.id);
+    }
+
+    localStorage.setItem("myList", JSON.stringify(myList));
+
     setLike((prev) => !prev);
   };
 
   return (
-    <Container>
+    <Container
+      ref={containerRef}
+      $isHovered={isHovered}
+      onMouseEnter={handleHover}
+      onMouseLeave={handleLeave}
+    >
       <HeaderWrapper>
-        <Number>No.{String(pokemonData.id).padStart(3, "0")}</Number>
-        <BookmarkIcon
-          icon={like ? faBookmark : faBookmarkRegular}
+        <Number $isHovered={isHovered}>
+          No.{String(pokemonData.id).padStart(3, "0")}
+        </Number>
+        <PocketBall
+          src={like || isChecked ? colorPocketBall : monoPocketBall}
           onClick={handleClick}
         />
       </HeaderWrapper>
       <Image
         src={pokemonData.frontImage}
+        $isHovered={isHovered}
         onClick={() => {
           navigate(`/pokemon/${pokemonData.id}`);
         }}
@@ -42,19 +76,32 @@ const ListItem: React.FC<Props> = ({ pokemonData }) => {
       </Name>
       <TypeWrapper>
         {pokemonData.types.map((type, index) => {
-          return <Type key={index}>{type}</Type>;
+          return (
+            <Type
+              key={index}
+              $backgroundColor={TYPE_COLOR[type].backgroundColor}
+              $fontColor={TYPE_COLOR[type].fontColor}
+            >
+              {type}
+            </Type>
+          );
         })}
       </TypeWrapper>
     </Container>
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ $isHovered: boolean }>`
   flex: 1;
   padding: 14px 14px 20px;
-  border: 2px solid #3864d2;
+  border: ${({ $isHovered }) =>
+    $isHovered ? "2px solid #fdcb05" : "2px solid #3864d2"};
   border-radius: 8px;
   text-align: center;
+  transition: 0.5s;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const HeaderWrapper = styled.div`
@@ -64,28 +111,25 @@ const HeaderWrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-const Number = styled.div`
-  color: rgba(1, 1, 1, 0.2);
+const Number = styled.div<{ $isHovered: boolean }>`
+  color: ${({ $isHovered }) =>
+    $isHovered ? "rgba(1, 1, 1, 0.8)" : "rgba(1, 1, 1, 0.2)"};
   font-size: 24px;
   font-weight: 900;
+  transition: 0.4s;
 `;
 
-const BookmarkIcon = styled(FontAwesomeIcon)`
-  color: rgba(1, 1, 1, 0.7);
-  font-size: 22px;
-  padding-bottom: 6px;
+const PocketBall = styled.img`
+  width: 32px;
   &:hover {
     cursor: pointer;
   }
 `;
 
-const Image = styled.img`
+const Image = styled.img<{ $isHovered: boolean }>`
   width: 140px;
   transition: 0.4s;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
+  ${({ $isHovered }) => ($isHovered ? "transform: scale(1.2)" : "")}
 `;
 
 const Name = styled.div`
@@ -103,9 +147,10 @@ const TypeWrapper = styled.div`
   gap: 12px;
 `;
 
-const Type = styled.div`
+const Type = styled.div<{ $backgroundColor: string; $fontColor: string }>`
   padding: 6px 18px;
-  background-color: aqua;
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
+  color: ${({ $fontColor }) => $fontColor};
   border-radius: 20px;
   font-size: 14px;
 `;

@@ -1,3 +1,5 @@
+import { TypeColor } from "./types";
+
 export const FILTER_SELECT_TYPE = {
   type: {
     name: "type",
@@ -44,4 +46,24 @@ export const FILTER_SELECT_TYPE = {
       "big-pecks",
     ],
   },
+};
+
+export const TYPE_COLOR: { [key: string]: TypeColor } = {
+  grass: { backgroundColor: "#7cc600", fontColor: "#222" },
+  poison: { backgroundColor: "#823b9a", fontColor: "#fff" },
+  fire: { backgroundColor: "#fa6d10", fontColor: "#fff" },
+  flying: { backgroundColor: "#aae5f3", fontColor: "#222" },
+  water: { backgroundColor: "#1f97e6", fontColor: "#fff" },
+  bug: { backgroundColor: "#ddc383", fontColor: "#222" },
+  normal: { backgroundColor: "#73f3ee", fontColor: "#222" },
+  electric: { backgroundColor: "#f4dc00", fontColor: "#222" },
+  ground: { backgroundColor: "#5b6111", fontColor: "#fff" },
+  fairy: { backgroundColor: "#fbafed", fontColor: "#fff" },
+  fighting: { backgroundColor: "#f93e0c", fontColor: "#fff" },
+  psychic: { backgroundColor: "#ea1b80", fontColor: "#fff" },
+  rock: { backgroundColor: "#666666", fontColor: "#fff" },
+  steel: { backgroundColor: "#a8a8a8", fontColor: "#222" },
+  ice: { backgroundColor: "#32d6fa", fontColor: "#222" },
+  ghost: { backgroundColor: "#8400ff", fontColor: "#fff" },
+  dragon: { backgroundColor: "#257e97", fontColor: "#fff" },
 };

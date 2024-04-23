@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import pokemonLogo from "./assets/pokemon-logo.png";
-import pageLogo from "./assets/page-logo.png";
+import Footer from "./components/Footer";
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -37,18 +37,15 @@ const Layout = () => {
             </NavListItem>
           </NavList>
         </Header>
-        <LogoWrapper>
-          <PageLogo src={pageLogo} />
-        </LogoWrapper>
         <Outlet />
+        <Footer />
       </Container>
-      <Footer />
     </>
   );
 };
 
 const Container = styled.div`
-  width: 1000px;
+  width: 1080px;
   margin: 0 auto;
   padding-top: 20px;
 `;
@@ -84,20 +81,6 @@ const NavListItem = styled.div<{ $isActive: boolean }>`
   &:hover {
     cursor: pointer;
   }
-`;
-
-const LogoWrapper = styled.div`
-  text-align: center;
-  margin-bottom: 30px;
-`;
-
-const PageLogo = styled.img`
-  width: 300px;
-`;
-
-const Footer = styled.footer`
-  height: 200px;
-  background-color: #f6f6f6;
 `;
 
 export default Layout;

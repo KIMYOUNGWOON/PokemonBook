@@ -1,6 +1,14 @@
 import axios from "axios";
 import axiosInstance from "../util/axiosInstance";
-import { Ability, Pokemon, PokemonData, Query, Type } from "../util/types";
+import {
+  Ability,
+  Pokemon,
+  PokemonData,
+  Query,
+  Stats,
+  SubPokemonData,
+  Type,
+} from "../util/types";
 
 export async function getPokemonList({
   offset,
@@ -10,8 +18,6 @@ export async function getPokemonList({
   height,
   weight,
 }: Query): Promise<{ totalItems: number; pagedPokemonList: PokemonData[] }> {
-  console.log(height);
-  console.log(weight);
   try {
     const { data } = await axiosInstance.get(`pokemon?limit=151`);
     const response = data.results;
@@ -31,7 +37,6 @@ export async function getPokemonList({
           height: data.height,
           weight: data.weight,
         };
-        console.log(pokemonData.id, pokemonData.height, pokemonData.weight);
         return pokemonData;
       })
     );
@@ -92,8 +97,52 @@ export async function getPokemonList({
 export async function getPokemon(id: string) {
   try {
     const { data } = await axiosInstance.get(`pokemon/${id}`);
-    return data;
+    const { data: additionalData } = await axiosInstance.get(
+      `pokemon-species/${id}`
+    );
+    const pokemonData = {
+      id: data.id,
+      name: data.name,
+      frontImage: data.sprites.front_default,
+      backImage: data.sprites.back_default,
+      frontImageShiny: data.sprites.front_shiny,
+      backImageShiny: data.sprites.back_shiny,
+      types: data.types.map((type: Type) => type.type.name),
+      abilities: data.abilities.map((ability: Ability) => ability.ability.name),
+      stats: data.stats.map((stat: Stats) => {
+        return { base_stat: stat.base_stat, name: stat.stat.name };
+      }),
+      height: data.height,
+      weight: data.weight,
+      color: additionalData.color.name,
+      habitat: additionalData.habitat.name,
+    };
+    return pokemonData;
   } catch (error) {
     console.log(error);
+  }
+}
+
+export async function getAllPokemon(offset: number): Promise<SubPokemonData[]> {
+  try {
+    const { data } = await axiosInstance.get(
+      `pokemon/?offset=${offset}&limit=20`
+    );
+    const response = data.results;
+    const pokemonList = await Promise.all(
+      response.map(async (pokemon: Pokemon) => {
+        const { data } = await axios.get(pokemon.url);
+        const pokemonData = {
+          id: data.id,
+          name: data.name,
+          frontImage: data.sprites.front_default,
+        };
+        return pokemonData;
+      })
+    );
+    return pokemonList;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 }

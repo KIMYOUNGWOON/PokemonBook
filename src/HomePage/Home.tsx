@@ -10,6 +10,8 @@ import { Query } from "../util/types";
 import { ChangeEvent, useState } from "react";
 import Button from "@mui/material/Button";
 import { StyledEngineProvider } from "@mui/styled-engine";
+import pageLogo from "../assets/page-logo.png";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
@@ -30,7 +32,7 @@ const Home = () => {
     weight,
   };
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["Pokemon-List", queryObj],
     queryFn: () => {
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -58,6 +60,9 @@ const Home = () => {
   return (
     <StyledEngineProvider injectFirst>
       <Container>
+        <LogoWrapper>
+          <PokedexLogo src={pageLogo} />
+        </LogoWrapper>
         <SearchBox>
           <SearchIcon icon={faMagnifyingGlass} />
           <SearchInput
@@ -65,11 +70,23 @@ const Home = () => {
             value={inputValue}
             onChange={handleChange}
           />
-          <SearchButton onClick={handleClick}>Search</SearchButton>
+          <SearchButton
+            onClick={() => {
+              if (inputValue) {
+                handleClick();
+              }
+            }}
+          >
+            Search
+          </SearchButton>
         </SearchBox>
         <Wrapper>
           <FilterSection />
-          <ListSection pokemonList={pokemonList} totalItems={totalItems} />
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            <ListSection pokemonList={pokemonList} totalItems={totalItems} />
+          )}
         </Wrapper>
       </Container>
     </StyledEngineProvider>
@@ -77,6 +94,15 @@ const Home = () => {
 };
 
 const Container = styled.div``;
+
+const LogoWrapper = styled.div`
+  text-align: center;
+  margin-bottom: 40px;
+`;
+
+const PokedexLogo = styled.img`
+  width: 300px;
+`;
 
 const SearchBox = styled.div`
   display: flex;
@@ -119,7 +145,7 @@ const SearchButton = styled(Button)`
 const Wrapper = styled.div`
   display: flex;
   gap: 40px;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 `;
 
 export default Home;
