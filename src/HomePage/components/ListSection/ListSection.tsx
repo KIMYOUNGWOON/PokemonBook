@@ -16,7 +16,7 @@ const ListSection: React.FC<Props> = ({ pokemonList, totalItems }) => {
           return <ListItem key={data.id} pokemonData={data} />;
         })}
       </ListWrapper>
-      <PaginationButton totalItems={totalItems} />
+      {totalItems > 6 && <PaginationButton totalItems={totalItems} />}
     </Container>
   );
 };
@@ -26,8 +26,8 @@ const Container = styled.div`
 `;
 
 const ListWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
   margin-bottom: 40px;
 `;

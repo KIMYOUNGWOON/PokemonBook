@@ -33,7 +33,6 @@ const PaginationButton: React.FC<Props> = ({ totalItems }) => {
     currentParams.set("offset", String(offset));
     currentParams.set("limit", String(itemsPerPage));
     setSearchParams(currentParams);
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   return (
