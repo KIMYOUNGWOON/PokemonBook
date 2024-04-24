@@ -16,8 +16,8 @@ const ListItem: React.FC<Props> = ({ pokemonData }) => {
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const stringData = localStorage.getItem("myList");
-  const myPickList = stringData ? JSON.parse(stringData) : [];
-  const isChecked = myPickList.some(
+  const myList = stringData ? JSON.parse(stringData) : [];
+  const isChecked = myList.some(
     (data: PokemonData) => data.id === pokemonData.id
   );
 
@@ -136,9 +136,6 @@ const Name = styled.div`
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 24px;
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const TypeWrapper = styled.div`
