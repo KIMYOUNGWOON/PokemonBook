@@ -31,7 +31,11 @@ const PokemonList = () => {
   }, [data]);
 
   const handleLoadMore = () => {
-    setOffset((prevLimit) => prevLimit + 20);
+    if (offset < 140) {
+      setOffset((prevLimit) => prevLimit + 20);
+    } else {
+      alert("No more data to load.");
+    }
   };
 
   return (
@@ -63,7 +67,7 @@ const ListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  height: 500px;
+  height: 620px;
   padding: 40px;
   border: 6px solid #d3defe;
   border-radius: 10px;

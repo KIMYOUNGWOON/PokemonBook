@@ -61,7 +61,7 @@ const ListItem: React.FC<Props> = ({ pokemonData }) => {
         />
       </HeaderWrapper>
       <Image
-        src={pokemonData.frontImage}
+        $imageUrl={pokemonData.frontImage}
         $isHovered={isHovered}
         onClick={() => {
           navigate(`/pokemon/${pokemonData.id}`);
@@ -128,8 +128,14 @@ const PocketBall = styled.img`
   }
 `;
 
-const Image = styled.img<{ $isHovered: boolean }>`
+const Image = styled.div<{ $isHovered: boolean; $imageUrl: string }>`
   width: 140px;
+  height: 140px;
+  margin: 0 auto;
+  background-image: ${({ $imageUrl }) => `url(${$imageUrl})`};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   transition: 0.4s;
   ${({ $isHovered }) => ($isHovered ? "transform: scale(1.2)" : "")}
 `;

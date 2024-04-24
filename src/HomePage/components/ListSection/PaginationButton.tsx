@@ -99,7 +99,7 @@ const Container = styled.div`
 const PageNumberButton = styled.div<{ $select: boolean }>`
   width: 30px;
   height: 30px;
-  padding-top: 9px;
+  padding-top: 7px;
   background-color: ${({ $select }) => ($select ? "#d3defe" : "")};
   color: #3864d2;
   border-radius: 50%;

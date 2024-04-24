@@ -5,10 +5,10 @@ import { getPokemon } from "../api/api";
 import PokemonList from "./components/PokemonList";
 import PokemonProfile from "./components/PokemonProfile";
 import PokemonStats from "./components/PokemonStats";
-import SkeletonUi from "./components/SkeletonUi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const Detail = () => {
   const { id } = useParams();
@@ -24,7 +24,11 @@ const Detail = () => {
   });
 
   if (!data || isLoading) {
-    return <SkeletonUi />;
+    return (
+      <LoadingSpinnerWrapper>
+        <LoadingSpinner icon={faSpinner} spinPulse />
+      </LoadingSpinnerWrapper>
+    );
   } else {
     return (
       <Container>
@@ -35,6 +39,8 @@ const Detail = () => {
               onClick={() => {
                 if (data.id > 1) {
                   navigate(`/pokemon/${data.id - 1}`);
+                } else {
+                  alert("This is the first page.");
                 }
               }}
             >
@@ -44,8 +50,10 @@ const Detail = () => {
             <PokemonNumber>{String(data.id).padStart(3, "0")}</PokemonNumber>
             <ArrowWrapper
               onClick={() => {
-                if (data.id < 1302) {
+                if (data.id < 151) {
                   navigate(`/pokemon/${data.id + 1}`);
+                } else {
+                  alert("This is the last page.");
                 }
               }}
             >
@@ -97,6 +105,17 @@ const ArrowText = styled.div`
 const PokemonNumber = styled.div`
   color: #3864d2;
   font-weight: 700;
+`;
+
+const LoadingSpinnerWrapper = styled.div`
+  width: 100%;
+  text-align: center;
+  padding: 240px 0 300px;
+`;
+
+const LoadingSpinner = styled(FontAwesomeIcon)`
+  color: #3864d2;
+  font-size: 60px;
 `;
 
 export default Detail;

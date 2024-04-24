@@ -31,7 +31,7 @@ const PokemonProfile: React.FC<Props> = ({ data }) => {
           </Wrapper>
         </InfoContainer>
       </InfoWrapper>
-      <PokemonImage src={data.frontImage} />
+      <PokemonImage $imageUrl={data.frontImage} />
     </Container>
   );
 };
@@ -63,8 +63,13 @@ const PokemonNumber = styled.div`
   margin-bottom: 40px;
 `;
 
-const PokemonImage = styled.img`
+const PokemonImage = styled.div<{ $imageUrl: string }>`
   width: 300px;
+  height: 300px;
+  background-image: ${({ $imageUrl }) => `url(${$imageUrl})`};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 `;
 
 const InfoContainer = styled.div`

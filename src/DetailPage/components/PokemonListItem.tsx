@@ -13,6 +13,7 @@ const PokemonListItem: React.FC<Props> = ({ pokemon }) => {
     <Container
       onClick={() => {
         navigate(`/pokemon/${pokemon.id}`);
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       }}
     >
       <PokemonImage src={pokemon.frontImage} />
