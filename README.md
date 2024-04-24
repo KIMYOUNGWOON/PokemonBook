@@ -48,9 +48,13 @@
 * 하나의 API에 모든 정보가 들어있지 않음
 
 
+![2024-04-252 21 22-ezgif com-video-to-gif-converter](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/18ea3c4f-20f7-470b-ac65-48e268d080c1)
 
+![ezgif com-video-to-gif-converter (6)](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/989e75ee-9d5d-482e-9623-7a81dcacbdd0)
 
 쿼리 객체가 변경 될떄마다 유즈 쿼리가 실행되서 조건에 맞는 리스트를 가져도오도록 구현함
+![ezgif com-video-to-gif-converter (7)](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/58bcdd38-edff-4cdb-a08b-244efbb5d16b)
+
 
 사용자 경험 향상
 로딩 처리
