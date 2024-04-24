@@ -30,11 +30,9 @@ const Container = styled.div`
   width: 230px;
   height: 72px;
   padding: 10px;
+  border: 2px solid #3864d2;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.75);
   &:hover {
     cursor: pointer;
   }

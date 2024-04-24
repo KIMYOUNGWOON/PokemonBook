@@ -45,7 +45,7 @@ const Layout = () => {
 };
 
 const Container = styled.div`
-  width: 1080px;
+  width: 1100px;
   margin: 0 auto;
   padding-top: 20px;
 `;

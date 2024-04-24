@@ -17,6 +17,7 @@ export async function getPokemonList({
   keyword,
   height,
   weight,
+  sort,
 }: Query): Promise<{ totalItems: number; pagedPokemonList: PokemonData[] }> {
   try {
     const { data } = await axiosInstance.get(`pokemon?limit=151`);
@@ -84,6 +85,13 @@ export async function getPokemonList({
       );
     }
 
+    if (sort) {
+      pokemonList =
+        sort === "asc"
+          ? pokemonList.sort((a, b) => a.id - b.id)
+          : pokemonList.sort((a, b) => b.id - a.id);
+    }
+
     const startIndex = offset === null ? 0 : Number(offset);
     const pagedPokemonList = pokemonList.slice(startIndex, startIndex + 9);
 
@@ -97,16 +105,15 @@ export async function getPokemonList({
 export async function getPokemon(id: string) {
   try {
     const { data } = await axiosInstance.get(`pokemon/${id}`);
-    const { data: additionalData } = await axiosInstance.get(
+    const { data: speciesData } = await axiosInstance.get(
       `pokemon-species/${id}`
     );
+
     const pokemonData = {
       id: data.id,
       name: data.name,
       frontImage: data.sprites.front_default,
       backImage: data.sprites.back_default,
-      frontImageShiny: data.sprites.front_shiny,
-      backImageShiny: data.sprites.back_shiny,
       types: data.types.map((type: Type) => type.type.name),
       abilities: data.abilities.map((ability: Ability) => ability.ability.name),
       stats: data.stats.map((stat: Stats) => {
@@ -114,8 +121,8 @@ export async function getPokemon(id: string) {
       }),
       height: data.height,
       weight: data.weight,
-      color: additionalData.color.name,
-      habitat: additionalData.habitat.name,
+      color: speciesData.color.name,
+      habitat: speciesData.habitat.name,
     };
     return pokemonData;
   } catch (error) {

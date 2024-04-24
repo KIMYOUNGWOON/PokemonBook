@@ -65,11 +65,13 @@ const ListItem: React.FC<Props> = ({ pokemonData }) => {
         $isHovered={isHovered}
         onClick={() => {
           navigate(`/pokemon/${pokemonData.id}`);
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         }}
       />
       <Name
         onClick={() => {
           navigate(`/pokemon/${pokemonData.id}`);
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         }}
       >
         {pokemonData.name}
@@ -145,7 +147,7 @@ const TypeWrapper = styled.div`
 `;
 
 const Type = styled.div<{ $backgroundColor: string; $fontColor: string }>`
-  padding: 6px 18px;
+  padding: 7px 18px 9px;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   color: ${({ $fontColor }) => $fontColor};
   border-radius: 20px;

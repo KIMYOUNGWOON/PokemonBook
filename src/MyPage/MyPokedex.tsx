@@ -9,15 +9,15 @@ import { useEffect, useState } from "react";
 const MyPokedex = () => {
   const [pokemonList, setPokemonList] = useState([]);
   const navigate = useNavigate();
-  const storedData = localStorage.getItem("myList");
-  const myList = storedData ? JSON.parse(storedData) : [];
-  const sortedMyList = myList.sort(
-    (a: PokemonData, b: PokemonData) => a.id - b.id
-  );
 
   useEffect(() => {
+    const storedData = localStorage.getItem("myList");
+    const myList = storedData ? JSON.parse(storedData) : [];
+    const sortedMyList = myList.sort(
+      (a: PokemonData, b: PokemonData) => a.id - b.id
+    );
     setPokemonList(sortedMyList);
-  }, [sortedMyList]);
+  }, []);
 
   const handleClick = (id: number) => {
     const removedPokemonList = pokemonList.filter(
@@ -59,11 +59,13 @@ const MyPokedex = () => {
                 src={pokemon.frontImage}
                 onClick={() => {
                   navigate(`/pokemon/${pokemon.id}`);
+                  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                 }}
               />
               <Name
                 onClick={() => {
                   navigate(`/pokemon/${pokemon.id}`);
+                  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                 }}
               >
                 {pokemon.name}

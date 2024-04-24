@@ -12,6 +12,9 @@ export interface PokemonData {
   abilities: string[];
   height: number;
   weight: number;
+  habitat: string;
+  color: string;
+  stats: { base_stat: number; name: string }[];
 }
 
 export interface SubPokemonData {
@@ -47,6 +50,7 @@ export interface Query {
   keyword: string | null;
   height: string | null;
   weight: string | null;
+  sort: string | null;
 }
 
 export interface FilterSelectBoxData {

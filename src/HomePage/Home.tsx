@@ -22,6 +22,7 @@ const Home = () => {
   const keyword = searchParams.get("keyword");
   const height = searchParams.get("height");
   const weight = searchParams.get("weight");
+  const sort = searchParams.get("sort");
 
   const queryObj: Query = {
     offset,
@@ -30,6 +31,7 @@ const Home = () => {
     keyword,
     height,
     weight,
+    sort,
   };
 
   const { data, isLoading } = useQuery({

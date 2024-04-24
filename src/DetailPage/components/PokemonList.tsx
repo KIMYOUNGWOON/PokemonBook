@@ -55,7 +55,9 @@ const PokemonList = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding-top: 40px;
+`;
 
 const ListWrapper = styled.div`
   display: flex;
@@ -63,8 +65,9 @@ const ListWrapper = styled.div`
   gap: 24px;
   height: 500px;
   padding: 40px;
+  border: 6px solid #d3defe;
   border-radius: 10px;
-  background-color: #f6f6f6;
+  background-color: #fff;
   overflow-y: scroll;
 `;
 
