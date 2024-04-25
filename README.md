@@ -10,7 +10,7 @@
 
 <p>&nbsp;</p>
 
-## 사용 기술
+## ◎ 사용 기술
 * 개발 언어 및 라이브러리 : React + TypeScript
 * 사용자 인터페이스 : MUI + styled-components
 * 서버 상태 관리 : TanStack Query
@@ -20,7 +20,7 @@
 
 <p>&nbsp;</p>
 
-## 사용자 인터페이스 작업
+## ◎ 사용자 인터페이스 작업
 <img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/728ba930-6c3a-421b-a9eb-5b8ed848276b" width="317"/> <img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/b682974b-0cda-4c6d-bea1-856a217529da" width="379"/>
 
 * 공통 레이아웃 구현
@@ -38,10 +38,10 @@
 
 <p>&nbsp;</p>
 
-## 메인 페이지 (리스트)
+## ◎ 메인 페이지 (리스트)
 <img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/c2456fc9-814d-4b73-8a0a-3c850679659d" width="800"/>
 
-### 데이터 페칭
+### # 데이터 페칭
 * 포켓몬 리스트 가져오기
   * PokeAPI를 활용하여 Axios로 비동기 요청 처리
   * tanstack-query의 useQuery 훅 활용
@@ -61,7 +61,7 @@
 
 <p>&nbsp;</p>
  
-### 페이지네이션
+### # 페이지네이션
 ![ezgif com-video-to-gif-converter (8)](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/a519bd72-4b6d-49c8-8ec6-758185d8177e)
 
 * 쿼리 스트링 활용
@@ -79,7 +79,7 @@
 
 <p>&nbsp;</p>
 
-### 필터 및 정렬
+### # 필터 및 정렬
 ![ezgif com-video-to-gif-converter (9)](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/8076efbc-ecd3-4f1b-ab98-b38ddd658d85)
 
 * 필터 기능
@@ -100,11 +100,9 @@
   * 쿼리 객체를 받은 API 함수에서 쿼리 객체의 값의 따라 필터링 된 리스트 반환
   * 리셋 버튼을 제공하여 모든 설정 조건을 초기화
   
-
- 
 <p>&nbsp;</p>
 
-### 검색 기능
+### # 검색 기능
 ![ezgif com-video-to-gif-converter (7)](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/58bcdd38-edff-4cdb-a08b-244efbb5d16b)
 
 * 포켓몬 이름 또는 번호로 검색
@@ -120,7 +118,7 @@
 
 <p>&nbsp;</p>
 
-## 상세 페이지
+## ◎ 상세 페이지
 <img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/ed0d28e4-1cc0-49c5-afd7-fefe1ad247a5" width="800"/>
 
 <p>&nbsp;</p>
@@ -136,7 +134,7 @@
 
 ![ezgif com-video-to-gif-converter (6)](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/989e75ee-9d5d-482e-9623-7a81dcacbdd0)
 
-### 데이터 페칭
+### # 데이터 페칭
 * 포켓몬 상세 정보 가져오기
   * React Router를 사용하여 포켓몬의 상세 정보를 가져오기 위한 동적 라우팅 구현
   * useParams 훅을 사용하여 현재 URL의 패스 파라미터에서 포켓몬의 ID를 추출
@@ -154,7 +152,7 @@
 
 <p>&nbsp;</p>
 
-## 마이 페이지
+## ◎ 마이 페이지
 ![2024-04-252 21 22-ezgif com-video-to-gif-converter](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/18ea3c4f-20f7-470b-ac65-48e268d080c1)
 
 * 나의 포켓몬 도감 저장
