@@ -87,7 +87,7 @@
 * 필터 기능
   * 포켓몬의 속성, 능력, 키, 몸무게 등 다양한 옵션 제공
   * 각 옵션은 중첩해서 적용 가능하여 세부적인 결과를 얻을 수 있음
-    * ?offset=0&limit=9&type=poison&ability=solar-power&height=small+large&weight=small+medium
+    * /?offset=0&limit=9&type=poison&ability=solar-power&height=small+large&weight=small+medium
  
 * 정렬 기능
   * 포켓몬 번호를 기준으로 오름차순, 내림차순 정렬 기능 제공
