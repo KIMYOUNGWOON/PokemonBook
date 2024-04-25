@@ -61,7 +61,20 @@
   * 페이지를 변경할 때마다 쿼리스트링의 offset값 업데이트
   * Home 컴포넌트에서 쿼리 객체를 생성하고 useQuery 훅의 queryKey로 사용
   * 쿼리 객체가 변경될 때마다 useQuery 훅이 재실행되어 새로운 리스트 반환
+  * 현재 URL 쿼리스트링의 offset 값으로 페이지 위치를 트리거하여 새로고침 후에도 현재 위치 유지
  
+* 페이지 이동 버튼 제공
+  * 가져온 리스트 수를 기반으로 페이지네이션 버튼 렌더링
+  * 페이지 버튼을 전부 한 번에 보여주지 않고 그룹화하여 보여주기 위해 offset 값을 활용하여 계산
+  * 페이지를 하나씩 이동하거나 페이지 그룹으로 이동하는 화살표 버튼 제공
+  * 뒤로 더 많은 페이지가 있는 경우, 점 세 개(•••)로 페이지가 더 있다는 것을 표시
+  * 현재 페이지 위치에 따라 화살표 아이콘과 점 세 개(•••)를 조건부 렌더링
+
+<p>&nbsp;</p>
+
+### 필터 및 정렬
+![ezgif com-video-to-gif-converter (9)](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/8076efbc-ecd3-4f1b-ab98-b38ddd658d85)
+
 * 페이지 이동 버튼 제공
   * 가져온 리스트 수를 기반으로 페이지네이션 버튼 렌더링
   * 현재 URL 쿼리스트링의 offset 값으로 현재 페이지 위치 트리거
@@ -71,22 +84,35 @@
 
 <p>&nbsp;</p>
 
-### 필터 및 정렬
+### 검색 기능
+![ezgif com-video-to-gif-converter (7)](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/58bcdd38-edff-4cdb-a08b-244efbb5d16b)
 
+* 페이지 이동 버튼 제공
+  * 가져온 리스트 수를 기반으로 페이지네이션 버튼 렌더링
+  * 현재 URL 쿼리스트링의 offset 값으로 현재 페이지 위치 트리거
+  * 페이지 버튼을 전부 한 번에 보여주지 않고 그룹화하여 보여주기 위해 offset 값을 활용하여 계산
+  * 페이지를 하나씩 이동하거나 페이지 그룹으로 이동하는 화살표 버튼 제공
+  * 현재 페이지 위치에 따라 화살표 아이콘과 점 세 개(•••)를 조건부 렌더링
+  * 페이지 새로고침 후에도 검색 조건 유지
+
+<p>&nbsp;</p>
 
 ## 상세 페이지
+<img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/aa72d974-0441-4f15-bde8-347d577b3b1c" width="800"/>
 
+<p>&nbsp;</p>
 
-## 마이 페이지
-* 하나의 API에 모든 정보가 들어있지 않음
-
-
-![2024-04-252 21 22-ezgif com-video-to-gif-converter](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/18ea3c4f-20f7-470b-ac65-48e268d080c1)
-
+### 데이터 페칭
 ![ezgif com-video-to-gif-converter (6)](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/989e75ee-9d5d-482e-9623-7a81dcacbdd0)
 
-쿼리 객체가 변경 될떄마다 유즈 쿼리가 실행되서 조건에 맞는 리스트를 가져도오도록 구현함
-![ezgif com-video-to-gif-converter (7)](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/58bcdd38-edff-4cdb-a08b-244efbb5d16b)
+<p>&nbsp;</p>
+
+## 마이 페이지
+![2024-04-252 21 22-ezgif com-video-to-gif-converter](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/18ea3c4f-20f7-470b-ac65-48e268d080c1)
+
+
+
+
 
 
 사용자 경험 향상
