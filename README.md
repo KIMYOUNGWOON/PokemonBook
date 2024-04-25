@@ -3,16 +3,17 @@
 * 포켓몬에 대한 정보를 한 곳에서 효율적으로 제공합니다.
 * 검색, 정렬, 다양한 옵션의 필터 등의 조건을 중첩 적용하여 세부적인 결과를 얻을 수 있습니다.
 * 기존의 포켓몬 도감보다 더 나은 사용자 경험을 제공하기 위해 노력했습니다.
-
-서비스 배포 링크
-시연 영상
+<br/>
+⭐️ 서비스 배포 링크 : [http://pokedex.com](http://s3-hosting-pokedex.s3-website.ap-northeast-2.amazonaws.com/)
+<br/>
+⭐️ 시연 영상 : 
 
 ## 사용 기술
 * 개발 언어 및 라이브러리 : React + TypeScript
 * 사용자 인터페이스 : MUI + styled-components
 * 서버 상태 관리 : TanStack Query
 * 개발 환경 구축 : vite
-* 프로젝트 관리 : Git / Git Hub
+* 프로젝트 관리 : Git + Git Hub
 * Pokemon API 활용
 
 ## 사용자 인터페이스 작업
