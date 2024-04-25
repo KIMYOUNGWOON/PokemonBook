@@ -34,6 +34,7 @@
 <p>&nbsp;</p>
 
 ## 메인 페이지 (리스트)
+![스크린샷 2024-04-25 오전 9 44 02](https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/c2456fc9-814d-4b73-8a0a-3c850679659d)
 
 ### 포켓몬 리스트 가져오기
 * Pokemon API를 활용하여 Axios로 비동기 요청 처리
