@@ -3,6 +3,8 @@
 * 포켓몬에 대한 정보를 한 곳에서 효율적으로 제공합니다.
 * 검색, 정렬, 다양한 옵션의 필터 등의 조건을 중첩 적용하여 세부적인 결과를 얻을 수 있습니다.
 
+<p>&nbsp;</p>
+
 ⭐️ 서비스 배포 링크 : [포켓몬 도감 서비스](http://s3-hosting-pokedex.s3-website.ap-northeast-2.amazonaws.com/)  
 
 ⭐️ 시연 영상 : [Youtube 영상](https://youtu.be/KNJ8O7B1g8Q?si=waTmpWljgsO4gkG9)   
