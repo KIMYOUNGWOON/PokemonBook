@@ -2,11 +2,13 @@
 ### 포켓몬 정보를 제공하는 포켓몬 도감 웹 서비스
 * 포켓몬에 대한 정보를 한 곳에서 효율적으로 제공합니다.
 * 검색, 정렬, 다양한 옵션의 필터 등의 조건을 중첩 적용하여 세부적인 결과를 얻을 수 있습니다.
-* 기존의 포켓몬 도감보다 더 나은 사용자 경험을 제공하기 위해 노력했습니다.
-<br/>
-⭐️ 서비스 배포 링크 : [http://pokedex.com](http://s3-hosting-pokedex.s3-website.ap-northeast-2.amazonaws.com/)
-<br/>
-⭐️ 시연 영상 : 
+* 기존의 포켓몬 도감보다 더 나은 사용자 경험을 제공하기 위해 노력했습니다.  
+
+⭐️ 서비스 배포 링크 : [포켓몬 도감 서비스](http://s3-hosting-pokedex.s3-website.ap-northeast-2.amazonaws.com/)  
+
+⭐️ 시연 영상 : [Youtube 영상](https://youtu.be/KNJ8O7B1g8Q?si=waTmpWljgsO4gkG9)   
+
+<p>&nbsp;</p>
 
 ## 사용 기술
 * 개발 언어 및 라이브러리 : React + TypeScript
@@ -15,6 +17,8 @@
 * 개발 환경 구축 : vite
 * 프로젝트 관리 : Git + Git Hub
 * Pokemon API 활용
+
+<p>&nbsp;</p>
 
 ## 사용자 인터페이스 작업
 <img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/728ba930-6c3a-421b-a9eb-5b8ed848276b" width="317"/> <img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/b682974b-0cda-4c6d-bea1-856a217529da" width="379"/>
@@ -27,6 +31,7 @@
 * 인터렉션 UI 개발
 * 컬러 정의
 
+<p>&nbsp;</p>
 
 ## 메인 페이지 (리스트)
 
