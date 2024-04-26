@@ -170,6 +170,8 @@
 ## ◎ 404 페이지
 <img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/ed47f709-bc02-4263-b747-05c69246707d" width="800"/>
 
+<p>&nbsp;</p>
+
 * 에러 처리
   * try-catch 블록을 사용하여 API 호출 중 발생할 수 있는 예외를 캐치
   * catch 블록에서 useQuery로 에러 던지기
