@@ -165,7 +165,15 @@
   * 저장된 포켓몬이 없는 경우 empty 메시지와 함께 리스트 페이지로 이동할 수 있는 링크 표시
   * ListItem 컴포넌트에서는 해당 포켓몬이 나의 도감에 있는지 체크하여 포켓볼 상태 유지
 
+<p>&nbsp;</p>
 
+## ◎ 404 페이지
+<img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/491fa236-f60a-49b5-8534-d8956fd5676a" width="800"/>
+
+* 에러 처리
+  * try-catch 블록을 사용하여 API 호출 중 발생할 수 있는 예외를 캐치
+  * catch 블록에서 useQuery로 에러 던지기
+  * useQuery 응답 객체에서 isError 프로퍼티 값에 따라 404 페이지로 리다이렉션
 
 
 
