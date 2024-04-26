@@ -168,13 +168,11 @@
 <p>&nbsp;</p>
 
 ## ◎ 404 페이지
-<img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/491fa236-f60a-49b5-8534-d8956fd5676a" width="800"/>
+<img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/ed47f709-bc02-4263-b747-05c69246707d" width="800"/>
 
 * 에러 처리
   * try-catch 블록을 사용하여 API 호출 중 발생할 수 있는 예외를 캐치
   * catch 블록에서 useQuery로 에러 던지기
   * useQuery 응답 객체에서 isError 프로퍼티 값에 따라 404 페이지로 리다이렉션
-
-
 
 
