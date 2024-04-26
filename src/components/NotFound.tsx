@@ -7,7 +7,7 @@ const NotFoundPage = () => {
     <Container>
       <Pokeball src={pokeballImage} alt="Pokeball" />
       <Message>404 - Page Not Found</Message>
-      <SubMessage>Oops! Looks like this page doesn't exist.</SubMessage>
+      <SubMessage>Oops! Looks like there is an API issue.</SubMessage>
       <HomeButton to="/">Go to Home</HomeButton>
     </Container>
   );
