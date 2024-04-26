@@ -9,19 +9,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
 const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["pokemon", id],
     queryFn: () => {
       if (id) {
         return getPokemon(id);
       }
     },
+    retry: false,
   });
+
+  useEffect(() => {
+    if (isError) {
+      navigate("/404");
+    }
+  }, [isError, navigate]);
 
   if (!data || isLoading) {
     return (

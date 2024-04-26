@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 import { getPokemonList } from "../api/api";
@@ -7,7 +7,7 @@ import ListSection from "./components/ListSection/ListSection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Query } from "../util/types";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { StyledEngineProvider } from "@mui/styled-engine";
 import pageLogo from "../assets/page-logo.png";
@@ -15,6 +15,7 @@ import LoadingSpinner from "./components/LoadingSpinner";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const offset = searchParams.get("offset");
   const type = searchParams.get("type");
@@ -34,13 +35,20 @@ const Home = () => {
     sort,
   };
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["Pokemon-List", queryObj],
     queryFn: () => {
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       return getPokemonList(queryObj);
     },
+    retry: false,
   });
+
+  useEffect(() => {
+    if (isError) {
+      navigate("/404");
+    }
+  }, [isError, navigate]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;

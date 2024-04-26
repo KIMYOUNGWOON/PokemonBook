@@ -20,9 +20,13 @@ export async function getPokemonList({
   sort,
 }: Query): Promise<{ totalItems: number; pagedPokemonList: PokemonData[] }> {
   try {
-    const { data } = await axiosInstance.get(`pokemon?limit=151`);
-    const response = data.results;
+    const { data, status } = await axiosInstance.get(`pokemon?limit=151`);
 
+    if (status !== 200) {
+      throw new Error("Failed to fetch Pokemon list");
+    }
+
+    const response = data.results;
     let pokemonList: PokemonData[] = await Promise.all(
       response.map(async (pokemon: Pokemon) => {
         const { data } = await axios.get(pokemon.url);
@@ -98,13 +102,18 @@ export async function getPokemonList({
     return { totalItems: pokemonList.length, pagedPokemonList };
   } catch (error) {
     console.log(error);
-    return { totalItems: 0, pagedPokemonList: [] };
+    throw error;
   }
 }
 
 export async function getPokemon(id: string) {
   try {
-    const { data } = await axiosInstance.get(`pokemon/${id}`);
+    const { data, status } = await axiosInstance.get(`pokemon/${id}`);
+
+    if (status !== 200) {
+      throw new Error("Failed to fetch Pokemon");
+    }
+
     const { data: speciesData } = await axiosInstance.get(
       `pokemon-species/${id}`
     );
@@ -127,6 +136,7 @@ export async function getPokemon(id: string) {
     return pokemonData;
   } catch (error) {
     console.log(error);
+    throw error;
   }
 }
 
@@ -135,6 +145,7 @@ export async function getAllPokemon(offset: number): Promise<SubPokemonData[]> {
     const { data } = await axiosInstance.get(
       `pokemon/?offset=${offset}&limit=20`
     );
+
     const response = data.results;
     const pokemonList = await Promise.all(
       response.map(async (pokemon: Pokemon) => {

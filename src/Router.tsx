@@ -3,6 +3,7 @@ import Home from "./HomePage/Home";
 import Detail from "./DetailPage/Detail";
 import Layout from "./Layout";
 import MyPokedex from "./MyPage/MyPokedex";
+import NotFound from "./components/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
       { path: "/pokemon/:id", element: <Detail /> },
     ],
   },
+  { path: "/404", element: <NotFound /> },
 ]);
 
 export default router;

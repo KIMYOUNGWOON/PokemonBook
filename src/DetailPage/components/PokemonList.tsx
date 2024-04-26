@@ -17,6 +17,7 @@ const PokemonList = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["allPokemon", offset],
     queryFn: () => getAllPokemon(offset),
+    retry: false,
   });
 
   useEffect(() => {
