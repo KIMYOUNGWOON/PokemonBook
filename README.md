@@ -25,7 +25,7 @@
 ## ◎ 사용자 인터페이스 작업
 <img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/728ba930-6c3a-421b-a9eb-5b8ed848276b" width="317"/> <img src="https://github.com/KIMYOUNGWOON/PokemonBook/assets/126956430/b682974b-0cda-4c6d-bea1-856a217529da" width="379"/>
 
-* 공통 레이아웃 구현
+* 공통 레이아웃
   * Layout.tsx 컴포넌트 생성
   * 해당 컴포넌트는 페이지의 공통된 요소를 포함 (ex. 헤더, 푸터, 네비게이션)
   * Outlet 컴포넌트를 사용하여 페이지마다 공통된 레이아웃 적용
